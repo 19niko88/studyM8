@@ -7,9 +7,7 @@ import 'package:studym8/presentation/screens/auth_screens/profile/profile.dart';
 import 'package:studym8/presentation/screens/auth_screens/sign_up/sign_up.dart';
 import 'start_screen//start_screen.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
