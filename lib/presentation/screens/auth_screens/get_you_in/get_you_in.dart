@@ -1,15 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'package:studym8/presentation/screens/auth_screens/sign_up/sign_up.dart';
 import 'package:studym8/resources/theme/elevated_button_style.dart';
 import 'package:studym8/resources/theme/text_styles.dart';
+import 'package:studym8/routes/app_router.dart';
 import 'package:studym8/widgets/social_item_container.dart';
 
-import '../widgets/social_item_container.dart';
-
-class GetYouIn extends StatelessWidget {
-  const GetYouIn({super.key});
+@RoutePage()
+class GetYouInScreen extends StatelessWidget {
+  const GetYouInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,8 @@ class GetYouIn extends StatelessWidget {
         body: SafeArea(
             child: Column(
           children: [
-            Image(image: AssetImage('resources/images/Clip-path-group04.png')),
+            const Image(
+                image: AssetImage('resources/images/Clip-path-group04.png')),
             Text('Let’s get you in',
                 textAlign: TextAlign.center, style: getYouIn1),
             Column(
@@ -50,7 +51,7 @@ class GetYouIn extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: getYouInElevatedButtonStyle,
-                    child: Text(
+                    child: const Text(
                       "Sign in with password",
                       style: TextStyle(fontSize: 16.0, color: Colors.white),
                     ),
@@ -69,7 +70,7 @@ class GetYouIn extends StatelessWidget {
                           style: getYouInRichW400,
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              Navigator.pushNamed(context, '/sign_up');
+                              context.router.push(const SignUpRoute());
                             },
                         ),
                       ],
@@ -83,6 +84,4 @@ class GetYouIn extends StatelessWidget {
   }
 }
 
-void onPressedMyButton() {
-  setState() {}
-}
+void onPressedMyButton() {}

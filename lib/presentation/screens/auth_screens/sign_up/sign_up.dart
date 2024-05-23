@@ -1,22 +1,22 @@
-import 'package:flutter/cupertino.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:studym8/presentation/screens/auth_screens/profile/profile.dart';
 import 'package:studym8/resources/theme/elevated_button_style.dart';
 import 'package:studym8/resources/theme/text_styles.dart';
+import 'package:studym8/routes/app_router.dart';
 import 'package:studym8/widgets/social_item_container.dart';
 
 import '../log_in/log_in.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+@RoutePage()
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<SignUpScreen> createState() => _SignUpState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignUpState extends State<SignUpScreen> {
   bool passenable = true;
 
   @override
@@ -29,13 +29,13 @@ class _SignUpState extends State<SignUp> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 28.0,
               ),
               Center(
                 child: Text('Welcome!', style: signUpTitleW600),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 11.0,
               ),
               Row(
@@ -45,25 +45,25 @@ class _SignUpState extends State<SignUp> {
                   ElevatedButton(
                       onPressed: onPressedMyButton,
                       style: signUpElevatedButtonStyle,
-                      child: Text('Sign up',
+                      child: const Text('Sign up',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 16.0,
                               color: Colors.white))),
-                  SizedBox(
+                  const SizedBox(
                     width: 10.0,
                   ),
                   ElevatedButton(
                       onPressed: logInButtonAction,
                       style: logInElevatedButtonStyle,
-                      child: Text('Login',
+                      child: const Text('Login',
                           style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 16.0,
                               color: Colors.black)))
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24.0,
               ),
               Center(
@@ -73,9 +73,9 @@ class _SignUpState extends State<SignUp> {
               Container(
                   height: 200,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(children: [
-                    TextField(
+                    const TextField(
                         decoration: InputDecoration(
                       hintText: "johndoe@gmail.com",
                       labelText: "Email Address",
@@ -90,7 +90,7 @@ class _SignUpState extends State<SignUp> {
                         decoration: InputDecoration(
                             hintText: "Jo123*&00gts",
                             labelText: "Password",
-                            prefixIcon: Align(
+                            prefixIcon: const Align(
                               widthFactor: 1.0,
                               heightFactor: 1.0,
                               child: Icon(Icons.lock),
@@ -109,8 +109,8 @@ class _SignUpState extends State<SignUp> {
                                     ? Icons.visibility
                                     : Icons.visibility_off)))),
                   ])),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text(
                   """*Password should contain at least 8 characters: 1 lowercase, 1 digit and or a symbol, and 1 uppercase character""",
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: 10.0),
@@ -121,15 +121,15 @@ class _SignUpState extends State<SignUp> {
                 child: ElevatedButton(
                     onPressed: signUpButtonAction,
                     style: signUpElevatedButtonStyle1,
-                    child: Text('Signup',
+                    child: const Text('Signup',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 16.0,
                             color: Colors.white))),
               ),
-              SizedBox(height: 19.0),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              const SizedBox(height: 19.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Row(
                   children: <Widget>[
                     Expanded(child: Divider(color: Colors.black)),
@@ -142,7 +142,7 @@ class _SignUpState extends State<SignUp> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               Column(
@@ -177,9 +177,8 @@ class _SignUpState extends State<SignUp> {
                         style: signUpRichW700,
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (_) => const LogIn()));
+                            context.router.push(const LogInRoute());
+
                           },
                       ),
                     ],
@@ -194,10 +193,10 @@ class _SignUpState extends State<SignUp> {
   }
 
   logInButtonAction() {
-    Navigator.pushNamed(context, '/log_in');
+    context.router.push(const LogInRoute());
   }
 
   signUpButtonAction() {
-    Navigator.pushNamed(context, '/profile');
+    context.router.push(const ProfileRoute());
   }
 }

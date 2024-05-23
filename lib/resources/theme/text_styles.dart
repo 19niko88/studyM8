@@ -34,7 +34,7 @@ TextStyle getYouInW400 = const TextStyle(
     fontWeight: FontWeight.w400);
 
 TextStyle getYouInRichW400 = const TextStyle(
-    color: const Color(0XffF35B04),
+    color: Color(0XffF35B04),
     fontSize: 16.0,
     fontWeight: FontWeight.w400);
 
@@ -46,6 +46,6 @@ TextStyle signUpW600 = const TextStyle(
     color: Colors.white);
 
 TextStyle signUpRichW700 = const TextStyle(
-    color: const Color(0XffF35B04),
+    color: Color(0XffF35B04),
     fontSize: 16.0,
     fontWeight: FontWeight.w700);

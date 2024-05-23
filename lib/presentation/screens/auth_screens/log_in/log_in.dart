@@ -1,19 +1,21 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:studym8/presentation/screens/auth_screens/profile/profile.dart';
-import 'package:studym8/presentation/screens/auth_screens/sign_up/sign_up.dart';
 import 'package:studym8/resources/theme/elevated_button_style.dart';
 import 'package:studym8/resources/theme/text_styles.dart';
 import 'package:studym8/widgets/social_item_container.dart';
 
-class LogIn extends StatefulWidget {
-  const LogIn({super.key});
+import '../../../../routes/app_router.dart';
+
+@RoutePage()
+class LogInScreen extends StatefulWidget {
+  const LogInScreen({super.key});
 
   @override
-  State<LogIn> createState() => _LogInState();
+  State<LogInScreen> createState() => _LogInScreenState();
 }
 
-class _LogInState extends State<LogIn> {
+class _LogInScreenState extends State<LogInScreen> {
   bool passenable = true;
 
   @override
@@ -26,13 +28,13 @@ class _LogInState extends State<LogIn> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 28.0,
               ),
               Center(
                 child: Text('Welcome Back', style: signUpTitleW600),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 11.0,
               ),
               Row(
@@ -47,7 +49,7 @@ class _LogInState extends State<LogIn> {
                               fontWeight: FontWeight.w600,
                               fontSize: 16.0,
                               color: Colors.black))),
-                  SizedBox(
+                  const SizedBox(
                     width: 10.0,
                   ),
                   ElevatedButton(
@@ -60,7 +62,7 @@ class _LogInState extends State<LogIn> {
                               color: Colors.white)))
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24.0,
               ),
               Center(
@@ -70,9 +72,9 @@ class _LogInState extends State<LogIn> {
               Container(
                   height: 200,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(children: [
-                    TextField(
+                    const TextField(
                         decoration: InputDecoration(
                       hintText: "johndoe@gmail.com",
                       labelText: "Email Address",
@@ -87,7 +89,7 @@ class _LogInState extends State<LogIn> {
                         decoration: InputDecoration(
                             hintText: "Jo123*&00gts",
                             labelText: "Password",
-                            prefixIcon: Align(
+                            prefixIcon: const Align(
                               widthFactor: 1.0,
                               heightFactor: 1.0,
                               child: Icon(Icons.lock),
@@ -106,8 +108,8 @@ class _LogInState extends State<LogIn> {
                                     ? Icons.visibility
                                     : Icons.visibility_off)))),
                   ])),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text('Forgot Password',
                     style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -119,15 +121,15 @@ class _LogInState extends State<LogIn> {
                 child: ElevatedButton(
                     onPressed: loginButtonAction,
                     style: signUpElevatedButtonStyle1,
-                    child: Text('Login',
+                    child: const Text('Login',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 16.0,
                             color: Colors.white))),
               ),
-              SizedBox(height: 19.0),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              const SizedBox(height: 19.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Row(
                   children: <Widget>[
                     Expanded(child: Divider(color: Colors.black)),
@@ -140,7 +142,7 @@ class _LogInState extends State<LogIn> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               Column(
@@ -168,22 +170,20 @@ class _LogInState extends State<LogIn> {
                   RichText(
                       text: TextSpan(
                     text: 'New to StudyM8 this?',
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.black,
                         fontSize: 16.0,
                         fontWeight: FontWeight.w400),
                     children: <TextSpan>[
                       TextSpan(
                         text: 'Create Account',
-                        style: TextStyle(
-                            color: const Color(0XffF35B04),
+                        style: const TextStyle(
+                            color: Color(0XffF35B04),
                             fontSize: 16.0,
                             fontWeight: FontWeight.w700),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (_) => const LogIn()));
+                            context.router.push(const LogInRoute());
                           },
                       ),
                     ],
@@ -198,14 +198,12 @@ class _LogInState extends State<LogIn> {
   }
 
   signUpButtonAction() {
-    Navigator.pushNamed(context, '/sign_up');
+    context.router.push(const SignUpRoute());
   }
 
   loginButtonAction() {
-    Navigator.pushNamed(context, '/profile');
+    context.router.push(const ProfileRoute());
   }
 }
 
-void onPressedMyButton() {
-  setState() {}
-}
+void onPressedMyButton() {}

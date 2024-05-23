@@ -1,16 +1,18 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:studym8/presentation/home_page/home_page.dart';
 import 'package:studym8/resources/theme/app_colors.dart';
 import 'package:studym8/resources/theme/elevated_button_style.dart';
+import 'package:studym8/routes/app_router.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+@RoutePage()
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<ProfileScreen> createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,13 +35,13 @@ class _ProfileState extends State<Profile> {
                   height: 184.0,
                   width: 184.0,
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('resources/images/Ellipse 1.png'),
                           fit: BoxFit.fill),
                       shape: BoxShape.circle),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24.0,
                 ),
                 Column(
@@ -65,12 +67,12 @@ class _ProfileState extends State<Profile> {
                               borderRadius: BorderRadius.circular(15.0),
                             )),
                       ),
-                      Text(
+                      const Text(
                         '*Username should contain numbers',
                         style: TextStyle(
                             fontWeight: FontWeight.w400, fontSize: 16),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40.0,
                       ),
                       ElevatedButton(
@@ -91,6 +93,6 @@ class _ProfileState extends State<Profile> {
   }
 
   continueButtonAction() {
-    Navigator.pushNamed(context, '/home_page');
+    context.router.push(const HomePageRoute());
   }
 }

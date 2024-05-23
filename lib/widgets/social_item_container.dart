@@ -26,9 +26,9 @@ class SocialItemContainer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(image),
-              SizedBox(height:6.0),
+              const SizedBox(height:6.0),
               Text(title,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white,
                       fontSize: 12.0,
                       fontWeight: FontWeight.w400)),

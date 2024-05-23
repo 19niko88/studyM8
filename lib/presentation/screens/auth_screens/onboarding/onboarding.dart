@@ -1,14 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:studym8/get_you_in/get_you_in.dart';
+import 'package:studym8/generated/locale_keys.g.dart';
 import 'package:studym8/model/onboarding_model.dart';
-import 'package:studym8/presentation/screens/auth_screens/get_you_in/get_you_in.dart';
 import 'package:studym8/resources/theme/app_colors.dart';
 import 'package:studym8/resources/theme/elevated_button_style.dart';
 import 'package:studym8/resources/theme/text_styles.dart';
+import 'package:studym8/routes/app_router.dart';
+import 'package:easy_localization/easy_localization.dart';
 
+@RoutePage()
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -20,7 +20,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int page = 0;
   List<OnboardingModel> pagesData = [
     const OnboardingModel(
-        title: 'Learn',
+        title: 'learn',
         desc1: 'Learn anytime & anywhere easily and conveniently',
         desc2: '1 of 3',
         image: 'resources/images/clip-path-group.png'),
@@ -38,7 +38,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    bool isLast = page == pagesData.length - 1;
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -66,7 +65,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -75,12 +74,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           onPressed: onPressedMyButton,
                           style: onboardingElevatedButtonStyle,
                           child: Text(
-                            "Skip",
+                            LocaleKeys.skip.tr(),
                             style: buttonTextStyle,
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 8.0,
                       ),
                       Expanded(
@@ -88,7 +87,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           onPressed: nextButtonAction,
                           style: onboardingElevatedButtonStyle,
                           child: Text(
-                            "Next",
+                            LocaleKeys.next.tr(),
                             style: buttonTextStyle,
                           ),
                         ),
@@ -101,7 +100,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   skipButtonAction() {
-    Navigator.pushNamed(context, '/get_you_in');
+    context.router.push(const GetYouInRoute());
   }
 
   nextButtonAction() {
@@ -115,6 +114,4 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 }
 
-void onPressedMyButton() {
-  setState() {}
-}
+void onPressedMyButton() {}
